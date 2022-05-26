@@ -7,7 +7,7 @@ package View;
 
 /**
  *
- * @author daniel.frey
+ * @author tiago
  */
 public class Login extends javax.swing.JFrame {
 
@@ -27,25 +27,82 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLbackgroung = new javax.swing.JLabel();
+        LabelTituloLogin = new javax.swing.JLabel();
+        LabelUsuario = new javax.swing.JLabel();
+        TextUsuario = new javax.swing.JTextField();
+        LabelSenha = new javax.swing.JLabel();
+        TextSenha = new javax.swing.JPasswordField();
+        ButtonEntrar = new javax.swing.JButton();
+        LabelPainelFundo = new javax.swing.JLabel();
+        LabelLoginFundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLbackgroung.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/Logo.jpg"))); // NOI18N
+        LabelTituloLogin.setFont(new java.awt.Font("Courier 10 Pitch", 1, 48)); // NOI18N
+        LabelTituloLogin.setForeground(new java.awt.Color(255, 255, 255));
+        LabelTituloLogin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LabelTituloLogin.setText("Login");
+        getContentPane().add(LabelTituloLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 810, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLbackgroung)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLbackgroung)
-        );
+        LabelUsuario.setFont(new java.awt.Font("DejaVu Sans", 1, 18)); // NOI18N
+        LabelUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        LabelUsuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LabelUsuario.setText("Usuario");
+        getContentPane().add(LabelUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 810, -1));
+
+        TextUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextUsuarioActionPerformed(evt);
+            }
+        });
+        getContentPane().add(TextUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 350, 400, 40));
+
+        LabelSenha.setFont(new java.awt.Font("DejaVu Sans", 1, 18)); // NOI18N
+        LabelSenha.setForeground(new java.awt.Color(255, 255, 255));
+        LabelSenha.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LabelSenha.setText("Senha");
+        getContentPane().add(LabelSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 810, -1));
+
+        TextSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextSenhaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(TextSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 430, 400, 40));
+
+        ButtonEntrar.setBackground(new java.awt.Color(164, 152, 152));
+        ButtonEntrar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        ButtonEntrar.setText("Entrar");
+        ButtonEntrar.setActionCommand("ButtonEntrar");
+        ButtonEntrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonEntrarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(ButtonEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 500, 400, 50));
+
+        LabelPainelFundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/painel-login.png"))); // NOI18N
+        getContentPane().add(LabelPainelFundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, 590, 520));
+
+        LabelLoginFundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/Logo.jpg"))); // NOI18N
+        getContentPane().add(LabelLoginFundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 1018));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void TextUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextUsuarioActionPerformed
+
+    private void ButtonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEntrarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ButtonEntrarActionPerformed
+
+    private void TextSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextSenhaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextSenhaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -83,6 +140,13 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLbackgroung;
+    private javax.swing.JButton ButtonEntrar;
+    private javax.swing.JLabel LabelLoginFundo;
+    private javax.swing.JLabel LabelPainelFundo;
+    private javax.swing.JLabel LabelSenha;
+    private javax.swing.JLabel LabelTituloLogin;
+    private javax.swing.JLabel LabelUsuario;
+    private javax.swing.JPasswordField TextSenha;
+    private javax.swing.JTextField TextUsuario;
     // End of variables declaration//GEN-END:variables
 }
