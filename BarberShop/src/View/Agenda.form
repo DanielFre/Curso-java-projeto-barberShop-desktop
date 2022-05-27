@@ -2,7 +2,7 @@
 
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
       <Dimension value="[1366, 1000]"/>
     </Property>
@@ -150,15 +150,10 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JComboBox" name="TextCliente">
+    <Component class="javax.swing.JComboBox" name="jComboboxCliente">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Alan"/>
-            <StringItem index="1" value="Afonso"/>
-            <StringItem index="2" value="Abigail"/>
-            <StringItem index="3" value="Alexandro"/>
-          </StringArray>
+          <StringArray count="0"/>
         </Property>
       </Properties>
       <AuxValues>
@@ -170,17 +165,15 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JComboBox" name="TextServico">
+    <Component class="javax.swing.JComboBox" name="jComboboxServico">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Barba"/>
-            <StringItem index="1" value="Barba + Corte"/>
-            <StringItem index="2" value="Corte"/>
-            <StringItem index="3" value=" "/>
-          </StringArray>
+          <StringArray count="0"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="jComboboxServicoItemStateChanged"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
@@ -192,7 +185,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="TextValor">
       <Properties>
-        <Property name="text" type="java.lang.String" value="0"/>
+        <Property name="text" type="java.lang.String" value="0,00"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
       <Events>
@@ -285,49 +278,14 @@
         <Component class="javax.swing.JTable" name="TableAgendamentos">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="7" rowCount="4">
-                <Column editable="true" title="Id" type="java.lang.Object">
-                  <Data value="1"/>
-                  <Data value="2"/>
-                  <Data value="3"/>
-                  <Data value="4"/>
-                </Column>
-                <Column editable="true" title="Cliente" type="java.lang.Object">
-                  <Data value="Alan"/>
-                  <Data value="Abigail"/>
-                  <Data value="Pedro"/>
-                  <Data value="Teste"/>
-                </Column>
-                <Column editable="true" title="Servi&#xe7;o" type="java.lang.Object">
-                  <Data value="Corte"/>
-                  <Data value="Barba"/>
-                  <Data value="Barba"/>
-                  <Data value="Barba + Corte"/>
-                </Column>
-                <Column editable="true" title="Valor" type="java.lang.Object">
-                  <Data value="10"/>
-                  <Data value="20"/>
-                  <Data value="20"/>
-                  <Data value="30"/>
-                </Column>
-                <Column editable="true" title="Data" type="java.lang.Object">
-                  <Data value="22/04/2018"/>
-                  <Data value="22/04/2018"/>
-                  <Data value="23/04/2018"/>
-                  <Data value="23/04/2018"/>
-                </Column>
-                <Column editable="true" title="Hora" type="java.lang.Object">
-                  <Data value="08:00"/>
-                  <Data value="09:00"/>
-                  <Data value="08:00"/>
-                  <Data value="09:00"/>
-                </Column>
-                <Column editable="true" title="Observa&#xe7;&#xe3;o" type="java.lang.Object">
-                  <Data value=""/>
-                  <Data value="Pode se Atrazar um pouco"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                </Column>
+              <Table columnCount="7" rowCount="0">
+                <Column editable="true" title="Id" type="java.lang.Object"/>
+                <Column editable="true" title="Cliente" type="java.lang.Object"/>
+                <Column editable="true" title="Servi&#xe7;o" type="java.lang.Object"/>
+                <Column editable="true" title="Valor" type="java.lang.Object"/>
+                <Column editable="true" title="Data" type="java.lang.Object"/>
+                <Column editable="true" title="Hora" type="java.lang.Object"/>
+                <Column editable="true" title="Observa&#xe7;&#xe3;o" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">

@@ -37,7 +37,7 @@ abstract class Pessoa {
         this.email = email;
         this.rg = rg;
         try {
-            this.dataNascimento = new SimpleDateFormat("dd/MM/yyyy HH:mm").parse(dataNascimento);
+            this.dataNascimento = new SimpleDateFormat("dd/MM/yyyy").parse(dataNascimento);
         } catch (ParseException ex) {
             Logger.getLogger(Pessoa.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  * @author danie
  */
 public class Agendamento {
-    
+
     private int id;
     private Clientes cliente;
     private Servico servico;
@@ -71,6 +71,16 @@ public class Agendamento {
         return dataAgendamento;
     }
 
+    public String getDataFormatada() {
+        return new SimpleDateFormat("dd/MM/yyyy").format(dataAgendamento);
+
+    }
+
+    public String getHoraFormatada() {
+        return new SimpleDateFormat("HH:mm").format(dataAgendamento);
+
+    }
+
     public void setDataAgendamento(Date dataAgendamento) {
         this.dataAgendamento = dataAgendamento;
     }
@@ -82,7 +92,5 @@ public class Agendamento {
     public void setObservacao(String observacao) {
         this.observacao = observacao;
     }
-    
-    
-    
+
 }

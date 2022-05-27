@@ -6,6 +6,7 @@
 package View;
 
 import Controller.LoginController;
+import Model.DAO.Banco;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -24,6 +25,7 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         controller = new LoginController(this);
+        Banco.inicia();
     }
 
     /**
@@ -45,6 +47,7 @@ public class Login extends javax.swing.JFrame {
         LabelLoginFundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         LabelTituloLogin.setFont(new java.awt.Font("Courier 10 Pitch", 1, 48)); // NOI18N
@@ -105,10 +108,8 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_TextUsuarioActionPerformed
 
     private void ButtonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEntrarActionPerformed
-        this.controller.fizTarefa();
+       this.controller.entrarNoSistema();       
         
-        System.out.println("Usuario: "+ TextUsuario.getText());
-        System.out.println("Senha: "+ TextSenha.getText());
     }//GEN-LAST:event_ButtonEntrarActionPerformed
 
     private void TextSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextSenhaActionPerformed

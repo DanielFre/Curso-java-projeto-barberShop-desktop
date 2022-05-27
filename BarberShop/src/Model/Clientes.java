@@ -4,10 +4,6 @@
  */
 package Model;
 
-import java.util.Date;
-
-
-
 /**
  *
  * @author danie
@@ -45,6 +41,10 @@ public class Clientes extends Pessoa{
         this.cep = cep;
     }
 
+    @Override
+    public String toString(){
+        return getNome();
+    }
     
     
 }
