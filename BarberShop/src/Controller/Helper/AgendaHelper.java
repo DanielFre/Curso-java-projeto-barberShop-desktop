@@ -8,6 +8,7 @@ import Model.Agendamento;
 import Model.Clientes;
 import Model.Servico;
 import View.Agenda;
+import View.Loading;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
@@ -19,7 +20,7 @@ import javax.swing.table.DefaultTableModel;
 public class AgendaHelper implements IHelper{
 
     private final Agenda view;
-
+    private final Loading loading = new Loading();
     public AgendaHelper(Agenda view) {
         this.view = view;
     }
@@ -95,10 +96,17 @@ public class AgendaHelper implements IHelper{
 
     @Override
     public void limparTela() {
-        view.getTextId().setText("");
+        view.getTextId().setText("0");
         view.getTextFormatedData().setText("");
         view.getTextFormatedHora().setText("");
         view.getTextObservacao().setText("");
     }
+    
+      public void iniciarLoading() {
+        this.loading.setVisible(true);
+    }
 
+    public void closeLoading() {
+        this.loading.dispose();
+    }
 }

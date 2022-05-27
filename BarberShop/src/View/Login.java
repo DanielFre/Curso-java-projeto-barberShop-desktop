@@ -62,6 +62,7 @@ public class Login extends javax.swing.JFrame {
         LabelUsuario.setText("Usuario");
         getContentPane().add(LabelUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 810, -1));
 
+        TextUsuario.setText("admin");
         TextUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TextUsuarioActionPerformed(evt);
@@ -75,6 +76,7 @@ public class Login extends javax.swing.JFrame {
         LabelSenha.setText("Senha");
         getContentPane().add(LabelSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 810, -1));
 
+        TextSenha.setText("admin");
         TextSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TextSenhaActionPerformed(evt);
@@ -89,6 +91,11 @@ public class Login extends javax.swing.JFrame {
         ButtonEntrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ButtonEntrarActionPerformed(evt);
+            }
+        });
+        ButtonEntrar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                ButtonEntrarKeyPressed(evt);
             }
         });
         getContentPane().add(ButtonEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 500, 400, 50));
@@ -115,6 +122,10 @@ public class Login extends javax.swing.JFrame {
     private void TextSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextSenhaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TextSenhaActionPerformed
+
+    private void ButtonEntrarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ButtonEntrarKeyPressed
+       this.controller.entrarNoSistema();   
+    }//GEN-LAST:event_ButtonEntrarKeyPressed
 
     /**
      * @param args the command line arguments

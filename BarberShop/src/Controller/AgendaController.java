@@ -11,7 +11,9 @@ import Model.DAO.AgendamentoDAO;
 import Model.DAO.ClienteDAO;
 import Model.DAO.ServicoDAO;
 import Model.Servico;
+import Servico.Correio;
 import View.Agenda;
+import View.Loading;
 import java.util.ArrayList;
 
 /**
@@ -22,6 +24,7 @@ public class AgendaController {
 
     private final Agenda view;
     private final AgendaHelper helper;
+//    private final Loading loading = new Loading();
 
     public AgendaController(Agenda view) {
         this.view = view;
@@ -63,13 +66,18 @@ public class AgendaController {
         helper.setarValor(servico.getValor());
     }
 
-    public void agendar(){
+    public void agendar() {
+        helper.iniciarLoading();
         // busca objeto agendamento da tela
         Agendamento agendamento = helper.obterModelo();
         //salvar objeto no banco de dados
         new AgendamentoDAO().insert(agendamento);
+        //envia email de notificação de confirmação de agendamento
+        Correio correio = new Correio();
+        correio.notificarPorEmail(agendamento);
         //inserir elemento na tabela
         atualizaTabela();
         helper.limparTela();
+        helper.closeLoading();
     }
 }

@@ -62,7 +62,6 @@ public class Agenda extends javax.swing.JFrame {
         LabelAgendaFundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1366, 1000));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         LabelAgenda.setFont(new java.awt.Font("Liberation Sans", 1, 36)); // NOI18N
@@ -127,10 +126,12 @@ public class Agenda extends javax.swing.JFrame {
         getContentPane().add(TextValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 280, 280, 40));
 
         TextFormatedData.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
+        TextFormatedData.setText("30/05/2022");
         TextFormatedData.setActionCommand("<Not Set>");
         getContentPane().add(TextFormatedData, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 340, 280, 40));
 
         TextFormatedHora.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
+        TextFormatedHora.setText("19:00");
         getContentPane().add(TextFormatedHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 400, 280, 40));
 
         TextObservacao.setColumns(20);
@@ -253,7 +254,7 @@ public class Agenda extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void iniciar() {
-        this.controller.atualizaTabela();   
+        this.controller.atualizaTabela();
         this.controller.atualizaCliente();
         this.controller.atualizaServico();
         this.controller.atualizaValor();
@@ -322,7 +323,5 @@ public class Agenda extends javax.swing.JFrame {
     public void setTextObservacao(JTextArea TextObservacao) {
         this.TextObservacao = TextObservacao;
     }
-    
-    
-    
+
 }
