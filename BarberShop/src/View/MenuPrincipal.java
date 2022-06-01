@@ -6,6 +6,12 @@
 package View;
 
 import Controller.MenuPrincipalController;
+import dao.Conexao;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 
 /**
  *
@@ -14,14 +20,14 @@ import Controller.MenuPrincipalController;
 public class MenuPrincipal extends javax.swing.JFrame {
 
     private MenuPrincipalController controller;
-
+ 
     /**
      * Creates new form MenuPrincipal
      */
     public MenuPrincipal() {
         initComponents();
         setExtendedState(MAXIMIZED_BOTH);
-        this.controller = new MenuPrincipalController(this);
+        this.controller = new MenuPrincipalController(this);     
     }
 
    
@@ -74,6 +80,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         MenuItemUsuario.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         MenuItemUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/icons/usuario32-icon.png"))); // NOI18N
         MenuItemUsuario.setText("  Usuarios");
+        MenuItemUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuItemUsuarioActionPerformed(evt);
+            }
+        });
         MenuCadastro.add(MenuItemUsuario);
 
         jMenuBar1.add(MenuCadastro);
@@ -126,6 +137,22 @@ public class MenuPrincipal extends javax.swing.JFrame {
         this.controller.navegarParaAgenda();
 
     }//GEN-LAST:event_MenuItemAgendaActionPerformed
+
+    private void MenuItemUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemUsuarioActionPerformed
+        try {
+//            this.conexao.getConnection();
+            Connection conexao = new Conexao().getConnection();
+            String sql = "insert into usuario(usuario, senha) values ('daniel', '123');";
+            
+            PreparedStatement statement = conexao.prepareStatement(sql);
+            statement.execute();
+            
+            conexao.close();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(MenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_MenuItemUsuarioActionPerformed
 
     /**
      * @param args the command line arguments
