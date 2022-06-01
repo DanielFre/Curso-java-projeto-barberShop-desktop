@@ -7,11 +7,9 @@ package View;
 
 import Controller.MenuPrincipalController;
 import dao.Conexao;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 
 /**
  *
@@ -140,7 +138,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void MenuItemUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemUsuarioActionPerformed
         try {
-//            this.conexao.getConnection();
             Connection conexao = new Conexao().getConnection();
             String sql = "insert into usuario(usuario, senha) values ('daniel', '123');";
             
@@ -151,7 +148,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             
         } catch (SQLException ex) {
             Logger.getLogger(MenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        } 
     }//GEN-LAST:event_MenuItemUsuarioActionPerformed
 
     /**
