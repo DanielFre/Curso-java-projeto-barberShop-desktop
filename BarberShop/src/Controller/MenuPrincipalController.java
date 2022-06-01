@@ -5,6 +5,7 @@
 package Controller;
 
 import View.Agenda;
+import View.CadastroUsuario;
 import View.MenuPrincipal;
 
 /**
@@ -22,5 +23,10 @@ public class MenuPrincipalController {
     public void navegarParaAgenda(){
         Agenda agenda = new Agenda();
         agenda.setVisible(true);
+    }
+
+    public void navegarParaCadastarUsuario() {
+        CadastroUsuario cadUser = new CadastroUsuario();
+        cadUser.setVisible(true);        
     }
 }

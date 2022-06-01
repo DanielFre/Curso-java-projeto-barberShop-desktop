@@ -43,6 +43,13 @@ abstract class Pessoa {
         }
     }
 
+    public Pessoa() {
+    }
+
+    public Pessoa(int id) {
+        this.id = id;
+    }
+
     public int getId() {
         return id;
     }

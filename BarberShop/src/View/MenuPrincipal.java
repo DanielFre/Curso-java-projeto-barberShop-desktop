@@ -6,10 +6,6 @@
 package View;
 
 import Controller.MenuPrincipalController;
-import dao.Conexao;
-import java.sql.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -137,18 +133,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_MenuItemAgendaActionPerformed
 
     private void MenuItemUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemUsuarioActionPerformed
-        try {
-            Connection conexao = new Conexao().getConnection();
-            String sql = "insert into usuario(usuario, senha) values ('daniel', '123');";
-            
-            PreparedStatement statement = conexao.prepareStatement(sql);
-            statement.execute();
-            
-            conexao.close();
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(MenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-        } 
+       this.controller.navegarParaCadastarUsuario();
+       
     }//GEN-LAST:event_MenuItemUsuarioActionPerformed
 
     /**

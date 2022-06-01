@@ -9,6 +9,7 @@ import Model.DAO.UsuarioDAO;
 import Model.Usuario;
 import View.Login;
 import View.MenuPrincipal;
+import java.sql.SQLException;
 
 /**
  *

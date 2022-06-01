@@ -14,7 +14,9 @@ import java.util.Date;
  */
 public class Usuario extends Pessoa{
     
-    private String senha;
+    private String senha;   
+    private String usuario;
+
     private String nivelDeAcesso;
 
     public Usuario(int id, String nome, String senha ) {
@@ -34,6 +36,18 @@ public class Usuario extends Pessoa{
         this.nivelDeAcesso = nivelDeAcesso;
     }
 
+    public Usuario(String senha, String usuario, int id) {
+        super(id);
+        this.senha = senha;
+        this.usuario = usuario;
+    }
+
+    public Usuario( String usuario, String senha) {
+        this.senha = senha;
+        this.usuario = usuario;
+    }
+    
+    
     public String getSenha() {
         return senha;
     }
@@ -49,6 +63,14 @@ public class Usuario extends Pessoa{
     public void setNivelDeAcesso(String nivelDeAcesso) {
         this.nivelDeAcesso = nivelDeAcesso;
     } 
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
    
     
 }
