@@ -38,7 +38,7 @@ public class CadastroUsuarioController {
             UsuarioDAO usuarioDAO = new UsuarioDAO(conexao);
             usuarioDAO.insert(usuario);
             conexao.close();
-            view.exibeMensagem("Usuário cadastrado com sucesso!");
+            view.exibeMensagem("Usuário salvo com sucesso!");
             helper.limpatela();
 
         } catch (SQLException ex) {

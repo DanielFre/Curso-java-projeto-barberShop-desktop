@@ -5,11 +5,12 @@
 package Controller;
 
 import Controller.Helper.LoginHelper;
+import Model.DAO.Conexao;
 import Model.DAO.UsuarioDAO;
 import Model.Usuario;
 import View.Login;
 import View.MenuPrincipal;
-import java.sql.SQLException;
+import java.sql.*;
 
 /**
  *
@@ -25,16 +26,18 @@ public class LoginController {
         this.helper = new LoginHelper(view);
     }
 
-    public void entrarNoSistema() {
+    public void autenticar() throws SQLException {
 
         // pegar o usuario da view
-        Usuario usuario = helper.obterModelo();
+        Usuario usuarioEsenha = helper.obterModelo();
 
         //pesquisar usuario no banco
-        UsuarioDAO usuarioDAO = new UsuarioDAO();
-        Usuario usuarioAutenticado = usuarioDAO.selectPorNomeESenha(usuario);
+        Connection conexao = new Conexao().getConnection();
+        UsuarioDAO usuarioDAO = new UsuarioDAO(conexao);
 
-        if (usuarioAutenticado != null) { // se tudo ok direciona para o menu principal
+        boolean existeUsuarioAutenticado = usuarioDAO.verificaSeExisteUsuarioEsenha(usuarioEsenha);
+
+        if (existeUsuarioAutenticado) { // se usuario existe direciona para o menu principal
             MenuPrincipal menu = new MenuPrincipal();
             menu.setVisible(true);
             this.view.dispose();
@@ -44,11 +47,11 @@ public class LoginController {
         }
     }
 
-    public void fizTarefa() {
-
-        System.out.println("Busquei algo do banco de dados");
-        this.view.exibeMensagem("Executei o Fiz Tarefa");
-
-    }
+//    public void fizTarefa() {
+//
+//        System.out.println("Busquei algo do banco de dados");
+//        this.view.exibeMensagem("Executei o Fiz Tarefa");
+//
+//    }
 
 }

@@ -21,9 +21,6 @@ public class UsuarioDAO {
         this.connection = connection;
     }
 
-    public UsuarioDAO() {    
-    }
-
     /**
      * Insere um usuario dentro do banco de dados
      *
@@ -32,10 +29,14 @@ public class UsuarioDAO {
     public void insert(Usuario usuario) throws SQLException {
         //        Banco.usuario.add(usuario);
 
-        String sql = "insert into usuario(usuario, senha) values ('" + usuario.getUsuario() + "', '" + usuario.getSenha() + "');";
+        String sql = "insert into usuario(usuario, senha) values (?, ?);";
         PreparedStatement statement = connection.prepareStatement(sql);
+        
+        statement.setString(1, usuario.getUsuario());
+        statement.setString(2, usuario.getSenha());
+        
         statement.execute();
-        connection.close();
+//        connection.close();
     }
 
     /**
@@ -88,13 +89,28 @@ public class UsuarioDAO {
      * @param usuario
      * @return Usuario encontrado no banco de dados
      */
-    public Usuario selectPorNomeESenha(Usuario usuario) {
-        for (Usuario usuarioLista : Banco.usuario) {
-            if (nomeESenhaSaoIguais(usuarioLista, usuario)) {
-                return usuarioLista;
-            }
-        }
-        return null;
+    public boolean verificaSeExisteUsuarioEsenha(Usuario usuario) throws SQLException {
+
+        String sql = "select * from usuario where usuario = ? and senha = ?;";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        
+        statement.setString(1, usuario.getUsuario());
+        statement.setString(2, usuario.getSenha());
+        
+        statement.execute();
+
+        ResultSet resultSet = statement.getResultSet();
+
+        return resultSet.next();
+
+//
+////        connection.close();
+//        for (Usuario usuarioLista : Banco.usuario) {
+//            if (nomeESenhaSaoIguais(usuarioLista, usuario)) {
+//                return usuarioLista;
+//            }
+//        }
+//        return null;
     }
 
     /**

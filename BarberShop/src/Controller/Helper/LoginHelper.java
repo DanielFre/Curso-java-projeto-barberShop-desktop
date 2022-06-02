@@ -20,17 +20,17 @@ public class LoginHelper implements IHelper{
     }
 
     public Usuario obterModelo() {
-        String nome = view.getTextUsuario().getText();
+        String usuario = view.getTextUsuario().getText();
         String senha = view.getTextSenha().getText();
-        Usuario modelo = new Usuario(0, nome, senha);
-        return modelo;
+        Usuario autentica = new Usuario(usuario, senha);
+        return autentica;
     }
 
     public void setarModelo(Usuario modelo) {
-        String nome = modelo.getNome();
+        String usuario = modelo.getNome();
         String senha = modelo.getSenha();
 
-        view.getTextUsuario().setText(nome);
+        view.getTextUsuario().setText(usuario);
         view.getTextSenha().setText(senha);
 
     }
