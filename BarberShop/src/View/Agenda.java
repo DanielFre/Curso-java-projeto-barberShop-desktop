@@ -149,7 +149,7 @@ public class Agenda extends javax.swing.JFrame {
                 ButtonAgendarActionPerformed(evt);
             }
         });
-        getContentPane().add(ButtonAgendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 390, 610, 50));
+        getContentPane().add(ButtonAgendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 400, 610, 40));
 
         TableAgendamentos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

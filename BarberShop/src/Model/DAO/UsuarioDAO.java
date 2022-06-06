@@ -25,52 +25,66 @@ public class UsuarioDAO {
      * Insere um usuario dentro do banco de dados
      *
      * @param usuario exige que seja passado um objeto do tipo usuario
+     * @return 
+     * @throws java.sql.SQLException
      */
-    public void insert(Usuario usuario) throws SQLException {
-        //        Banco.usuario.add(usuario);
+    public Usuario insert(Usuario usuario) throws SQLException {
 
         String sql = "insert into usuario(usuario, senha) values (?, ?);";
-        PreparedStatement statement = connection.prepareStatement(sql);
-        
+        PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+
         statement.setString(1, usuario.getUsuario());
         statement.setString(2, usuario.getSenha());
-        
+
         statement.execute();
-//        connection.close();
+        
+        ResultSet resulSet = statement.getGeneratedKeys();
+        
+        if(resulSet.next()){
+            int id = resulSet.getInt("id");
+            usuario.setId(id);
+        }
+        
+        return usuario;
     }
 
     /**
      * Atualiza um Objeto no banco de dados
      *
      * @param usuario
-     * @return
      */
-    public boolean update(Usuario usuario) {
+    public void update(Usuario usuario) throws SQLException {
 
-        for (int i = 0; i < Banco.usuario.size(); i++) {
-            if (idSaoIguais(Banco.usuario.get(i), usuario)) {
-                Banco.usuario.set(i, usuario);
-                return true;
-            }
+        String sql = "update usuario set usuario = ?, senha = ? where id = ? ;";
+        PreparedStatement statement = connection.prepareStatement(sql);
+
+        statement.setString(1, usuario.getUsuario());
+        statement.setString(2, usuario.getSenha());
+        statement.setInt(3, usuario.getId());
+
+        statement.execute();
+    }
+
+    public void insertOrUpdate(Usuario usuario) throws SQLException {
+        if (usuario.getId() > 0) {
+            update(usuario);
+        } else {
+            insert(usuario);
         }
-        return false;
-
     }
 
     /**
      * Deleta um objeto do banco de dados pelo id do usuario passado
      *
      * @param usuario
-     * @return
      */
-    public boolean delete(Usuario usuario) {
-        for (Usuario usuarioLista : Banco.usuario) {
-            if (idSaoIguais(usuarioLista, usuario)) {
-                Banco.usuario.remove(usuarioLista);
-                return true;
-            }
-        }
-        return false;
+    public void delete(Usuario usuario) throws SQLException {
+        String sql = "delete from usuario where id = ?;";
+        PreparedStatement statement = connection.prepareStatement(sql);
+
+        statement.setInt(1, usuario.getId());
+
+        statement.execute();
     }
 
     /**
@@ -78,8 +92,38 @@ public class UsuarioDAO {
      *
      * @return uma lista com todos os registros do banco
      */
-    public ArrayList<Usuario> selectAll() {
-        return Banco.usuario;
+    public ArrayList<Usuario> selectAll() throws SQLException {
+
+        String sql = "select * from usuario;";
+        PreparedStatement statement = connection.prepareStatement(sql);
+
+        return pesquisa(statement);
+    }
+
+    private ArrayList<Usuario> pesquisa(PreparedStatement statement) throws SQLException {
+        ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
+
+        statement.execute();
+        ResultSet resultSet = statement.getResultSet();
+
+        while (resultSet.next()) {
+            int id = resultSet.getInt("id");
+            String usuario = resultSet.getString("usuario");
+            String senha = resultSet.getString("senha");
+
+            Usuario usuarioComDadosDoBanco = new Usuario(id, usuario, senha);
+            usuarios.add(usuarioComDadosDoBanco);
+        }
+        return usuarios;
+    }
+
+    public Usuario selectPorId(Usuario usuario) throws SQLException {
+        String sql = "select * from usuario where id = ?;";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setInt(1, usuario.getId());
+
+        return pesquisa(statement).get(0);
+
     }
 
     /**
@@ -93,24 +137,15 @@ public class UsuarioDAO {
 
         String sql = "select * from usuario where usuario = ? and senha = ?;";
         PreparedStatement statement = connection.prepareStatement(sql);
-        
+
         statement.setString(1, usuario.getUsuario());
         statement.setString(2, usuario.getSenha());
-        
+
         statement.execute();
 
         ResultSet resultSet = statement.getResultSet();
 
         return resultSet.next();
-
-//
-////        connection.close();
-//        for (Usuario usuarioLista : Banco.usuario) {
-//            if (nomeESenhaSaoIguais(usuarioLista, usuario)) {
-//                return usuarioLista;
-//            }
-//        }
-//        return null;
     }
 
     /**

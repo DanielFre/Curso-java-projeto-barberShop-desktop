@@ -48,6 +48,10 @@ public class CadastroUsuario extends javax.swing.JFrame {
         jLsenhaTexto = new javax.swing.JLabel();
         jPFsenha = new javax.swing.JPasswordField();
         jBCadastrarNovoUsuario = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -69,6 +73,23 @@ public class CadastroUsuario extends javax.swing.JFrame {
                 jBCadastrarNovoUsuarioActionPerformed(evt);
             }
         });
+
+        jMenu1.setText("File");
+
+        jMenuItem1.setText("Teste ususario DAO");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -122,8 +143,31 @@ public class CadastroUsuario extends javax.swing.JFrame {
 
     private void jBCadastrarNovoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarNovoUsuarioActionPerformed
         this.controller.cadastrarUsuario();
-        
+
     }//GEN-LAST:event_jBCadastrarNovoUsuarioActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+
+        try {
+            Connection conexao = new Conexao().getConnection();
+            UsuarioDAO usuarioDAO = new UsuarioDAO(conexao);
+
+            //teste de insert
+            Usuario usuarioInsert = new Usuario(0,"tsteUsuarioInsert", "123");
+            Usuario usuarioInserido = usuarioDAO.insert(usuarioInsert);
+            System.out.println("usuarioInserido: " + usuarioInserido.getUsuario());
+            // teste de select por id
+            Usuario usuarioSelecionado = usuarioDAO.selectPorId(usuarioInserido);
+            
+            // teste delete
+            usuarioDAO.delete(usuarioSelecionado);
+            
+            //teste select all
+        } catch (SQLException ex) {
+            Logger.getLogger(CadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -165,6 +209,10 @@ public class CadastroUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLsenhaTexto;
     private javax.swing.JLabel jLtextid;
     private javax.swing.JLabel jLuserTexto;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPasswordField jPFsenha;
     private javax.swing.JTextField jTFid;
     private javax.swing.JTextField jTFusuario;
